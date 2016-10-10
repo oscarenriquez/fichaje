@@ -6,6 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Oscar Enríquez",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarenriquez/fichaje.git"
+  },
+  "keywords": [
+    "Fichaje",
+    "Ruteo"
+  ],
+  "bugs": {
+    "url": "https://github.com/oscarenriquez/fichaje/issues"
+  },
+  "homepage": "https://github.com/oscarenriquez/fichaje#readme"
 }

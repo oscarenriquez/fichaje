@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="TrabajoCampo">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="SIGE Trabajo Campo">
+    <meta name="author" content="EMPAGUA">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="angular/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="angular/bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.min.css">
+    <link rel="stylesheet" href="angular/bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="angular/css/app.css">
+</head>
+
+<body layout="row" ng-controller="MainCtrl as main" ng-cloak>
+
+    <div layout-fill flex>
+        <header ng-insert src="'angular/template/header.html'"></header>
+        <md-content ui-view flex layout-fill ng-hide="main.loading" class="auto-content">
+        </md-content>
+        <div layout="row" flex layout-padding layout-fill layout-align="center center" ng-show="main.loading" class="auto-content">
+            <md-progress-circular md-diameter="96"></md-progress-circular>
+        </div>
+    </div>
+
+    <script src="angular/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="angular/bower_components/angular/angular.js"></script>
+    <script src="angular/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="angular/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="angular/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="angular/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="angular/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="angular/bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.min.js"></script>
+    <script src="angular/bower_components/angular-ui-router-anim-in-out/anim-in-out.js"></script>
+
+    <script src="angular/script/app.js"></script>
+    <script src="angular/script/directives/ngInsert.js"></script>
+
+    <script src="angular/script/services/appService.js"></script>
+    <script src="angular/script/services/fichajeService.js"></script>
+
+    <script src="angular/script/controllers/mainCtrl.js"></script>
+    <script src="angular/script/controllers/listFichajesCtrl.js"></script>
+    <script src="angular/script/controllers/fichajeCtrl.js"></script>
+    <script src="angular/script/controllers/fichajeDetalleCtrl.js"></script>
+
+    <script src="angular/script/controllers/fichajeStep1Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep2Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep3Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep4Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep5Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep6Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep7Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep8Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep9Ctrl.js"></script>
+    <script src="angular/script/controllers/fichajeStep10Ctrl.js"></script>
+</body>
+
+</html>

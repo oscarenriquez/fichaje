@@ -1,8 +1,8 @@
 (function(angular) {
-    angular.module("TrabajoCampo").factory('fichaje', function($http) {
+    angular.module("TrabajoCampo").factory('fichaje', function($http, $timeout) {
         var thisFichaje = {};
         thisFichaje.getAll = function() {
-            var promise = $http({
+            /*var promise = $http({
                     method: 'POST',
                     url: 'Session',
                     data: $.param({ "key": 119 }),
@@ -21,7 +21,14 @@
                         return response.data;
                     }
                 );
-            return promise;
+            return promise;*/
+
+            return new Promise(function(resolve, reject) {
+                $timeout(function() {
+                    var arreglo = [];
+                    resolve(arreglo);
+                }, 1000);
+            });
         };
 
         // get single record from database

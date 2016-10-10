@@ -1,0 +1,9 @@
+<md-dialog flex-gt-sm="70" layout-padding aria-label="Detalle">
+    <md-dialog-content layout-align="center center">
+        <h4>{{detalle.cliente}}</h4>
+        <p>{{detalle.direccion}}</p>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end end" class="md-accent">
+        <md-button ng-click="detalle.closeDialog()" class="dialog-class" aria-label="label">Cerrar</md-button>
+    </md-dialog-actions>
+</md-dialog>

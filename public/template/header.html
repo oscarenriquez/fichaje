@@ -1,0 +1,15 @@
+<md-toolbar class="md-whiteframe-z2">
+    <div class="md-toolbar-tools">
+        <md-button class="md-warn md-raised" aria-label="Go Back" ng-click="main.home()" ng-show="main.history">
+            <md-icon class="material-icons">clear</md-icon>
+            Cancelar
+        </md-button>
+        <h3>
+            <span> {{main.const.applicationName}} </span>
+        </h3>
+        <span flex></span>
+        <md-button class="md-fab md-mini" aria-label="Logout" ng-click="main.logout()">
+            <md-icon class="material-icons"><i class="material-icons">power_settings_new</i></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>

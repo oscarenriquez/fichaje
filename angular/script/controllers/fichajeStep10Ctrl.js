@@ -1,5 +1,5 @@
 (function() {
-    TrabajoCampo.FichajeStep2Ctrl = function() {
+    TrabajoCampo.FichajeStep10Ctrl = function() {
         var scope = this;
     };
 

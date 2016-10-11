@@ -1,8 +1,140 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Tipo del Uso del Suelo</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
-        
-    </md-content>
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Tipo del Uso del Suelo</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="step6.formFicha">
+                <md-input-container class="md-block">
+                    <label>Privado</label>
+                    <md-select ng-model="ficha.privado">
+                        <md-option>
+                            RESIDENCIAL
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="ficha.instGobierno" aria-label="Institucion de Gobierno">
+                        Instituci&oacute;n de Gobierno
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.fracionamiento" aria-label="Fracionamiento">
+                        Fraccionamiento
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.vivienda" aria-label="Vivienda">
+                        Vivienda
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.comercio" aria-label="Comercio">
+                        Comercio
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.industria" aria-label="Industria">
+                        Industria
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.otros" aria-label="Otros">
+                        Otros
+                    </md-checkbox>
+                </md-input-container>
+                <div>
+                    <!-- Vivienda -->
+                    <div layout="row">
+                        <md-input-container flex="50">
+                            <md-checkbox name="unifamiliar" aria-label="Unifamiliar" ng-model="ficha.unifamiliar">Unifamiliar</md-checkbox>
+                        </md-input-container>
+                        <md-input-container flex="50">
+                            <md-checkbox name="condominio" aria-label="Condominio" ng-model="ficha.condominio">Condominio</md-checkbox>
+                        </md-input-container>
+                    </div>
+
+                    <md-input-container class="md-block">
+                        <!-- Unifamiliar -->
+                        <label>Cant. niveles</label>
+                        <input name="cantNiveles" ng-model="ficha.cantNiveles">
+                    </md-input-container>
+
+                    <div>
+                        <!-- Condominio -->
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <md-checkbox name="vertical" aria-label="Vertical" ng-model="ficha.vertical">Vertical</md-checkbox>
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <md-checkbox name="horizontal" aria-label="Horizontal" ng-model="ficha.horizontal">Horizontal</md-checkbox>
+                            </md-input-container>
+                        </div>
+
+                        <md-input-container class='md-block'>
+                            <label>Cantidad</label>
+                            <input name='cantidad' ng-model='ficha.cantidad'>
+                        </md-input-container>
+                    </div>
+
+                </div>
+                <!-- END Vivienda -->
+
+                <div>
+                    <!-- Comercio -->
+                    <md-input-container class='md-block'>
+                        <label>Venta de Productos</label>
+                        <md-select ng-model='ficha.ventaProductos'>
+                            <md-option ng-value='producto' ng-repeat='producto in productos'>
+                                {{ producto.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class='md-block'>
+                        <label>Cant. Locales</label>
+                        <input name='cantLocales' ng-model='ficha.cantLocales'>
+                    </md-input-container>
+
+                    <md-input-container class='md-block'>
+                        <label>Servicios</label>
+                        <md-select ng-model='ficha.servicios'>
+                            <md-option ng-value='servicio' ng-repeat='servicio in servicios'>
+                                {{ servicio.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class='md-block'>
+                        <label>Almtos. Y Bebidas</label>
+                        <md-select ng-model='ficha.alimBebidas'>
+                            <md-option ng-value='alimBebidas' ng-repeat='alimBebidas in productosAlimentos'>
+                                {{ alimBebidas.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <!--END Comercio-->
+                <div>
+                    <!-- Industria -->
+                    <md-input-container class='md-block'>
+                        <label>Tipo</label>
+                        <md-select ng-model='ficha.tipoIndustria'>
+                            <md-option ng-value='tipo' ng-repeat='tipo in tiposIndustria'>
+                                {{ tipo.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <!--END Industria-->
+                <div>
+                    <!-- Otros -->
+                    <md-input-container class='md-block'>
+                        <label>Tipos</label>
+                        <md-select ng-model='ficha.tipoOtros'>
+                            <md-option ng-value='tipo' ng-repeat='tipo in tipoOtros'>
+                                {{ tipo.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <!--END Otros-->
+
+                <md-input-container class='md-block'>
+                    <label>Observaciones</label>
+                    <input name='observaciones' ng-model='ficha.observaciones'>
+                </md-input-container>
+            </form>
+        </md-content>
+    </div>
 </div>

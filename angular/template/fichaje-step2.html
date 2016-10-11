@@ -1,8 +1,27 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Datos del Medidor</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
-
-    </md-content>
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Datos del Medidor</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="step2.formFicha">
+                <md-input-container class="md-block">
+                    <label>Nombre</label>
+                    <input name="nombre" ng-model="ficha.nombre">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Direcci&oacute;n</label>
+                    <input name="direccion" ng-model="ficha.direccion">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Medidor</label>
+                    <input name="medidor" ng-model="ficha.medidor">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Cuentas Alcantarillado</label>
+                    <input name="ctasAlcantarillado" ng-model="ficha.ctasAlcantarillado">
+                </md-input-container>
+            </form>
+        </md-content>
+    </div>
 </div>

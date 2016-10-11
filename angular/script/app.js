@@ -17,7 +17,7 @@ var TrabajoCampo;
                     templateUrl: "angular/template/fichaje.html",
                     controller: "FichajeCtrl",
                     controllerAs: "ficha"
-                }) // start nested states and views step1 to step5
+                }) // start nested states and views step1 to step10
                 .state("fichaje.step1", { // step1
                     url: "/step1",
                     views: {

@@ -1,8 +1,24 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Uso del Suelo</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
-
-    </md-content>
+<div class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Uso del Suelo</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <md-radio-group ng-model="ficha.usoSuelo">
+                <md-radio-button>
+                    Deshabitado
+                </md-radio-button>
+            </md-radio-group>
+            <form name="step5.formFicha">
+                <md-input-container class="md-block">
+                    <label>Cant. Habitantes</label>
+                    <input name="cantHabitantes" ng-model="ficha.cantHabitantes">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Cant. Trabajadores</label>
+                    <input name="cantTrabajadores" ng-model="ficha.cantTrabajadores">
+                </md-input-container>
+            </form>
+        </md-content>
+    </div>
 </div>

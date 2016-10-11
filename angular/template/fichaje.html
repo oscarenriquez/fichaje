@@ -1,24 +1,20 @@
 <md-content layout="row" layout-fill>
-    <div flex>
-        <section class="scrollable-nav-content top-clear bottom-space">
-            <div ui-view="fichaje" class="anim-in-out {{ficha.flow.currentAnimate}}" data-anim-sync="true" data-anim-speed="1000">
+    <section id="fichaje" ui-view="fichaje" class="anim-in-out speed-transition {{ficha.flow.currentAnimate}}" data-anim-sync="true" data-anim-speed="500" md-swipe-left="ficha.next()" md-swipe-right="ficha.prev()">
+    </section>
+    <div flex></div>
+    <footer class="sticky-footer">
+        <md-toolbar>
+            <div class="md-toolbar-tools ">
+                <md-button aria-label="Preview" ng-click="ficha.prev()" ng-disabled="ficha.flow.isFirst">
+                    <md-icon class="material-icons ">keyboard_arrow_left</md-icon>
+                    Anterior
+                </md-button>
+                <span flex></span>
+                <md-button aria-label="Next" ng-click="ficha.next()" ng-disabled="ficha.flow.isLast">
+                    Siguiente
+                    <md-icon class="material-icons ">keyboard_arrow_right</md-icon>
+                </md-button>
             </div>
-        </section>
-        <div flex></div>
-        <footer class="sticky-footer">
-            <md-toolbar>
-                <div class="md-toolbar-tools ">
-                    <md-button aria-label="Preview" ng-click="ficha.prev()" ng-disabled="ficha.flow.isFirst">
-                        <md-icon class="material-icons ">keyboard_arrow_left</md-icon>
-                        Anterior
-                    </md-button>
-                    <span flex></span>
-                    <md-button aria-label="Next" ng-click="ficha.next()" ng-disabled="ficha.flow.isLast">
-                        Siguiente
-                        <md-icon class="material-icons ">keyboard_arrow_right</md-icon>
-                    </md-button>
-                </div>
-            </md-toolbar>
-        </footer>
-    </div>
+        </md-toolbar>
+    </footer>
 </md-content>

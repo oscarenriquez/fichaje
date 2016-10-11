@@ -1,8 +1,62 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Resultados</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Resultados</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form>
+                <md-input-container class='md-block'>
+                    <md-checkbox name='cargaInformacion' aria-label='Carga Informaci&oacute;n' ng-model='ficha.cargaInformacion'>Carga Informaci&oacute;n</md-checkbox>
+                </md-input-container>
 
-    </md-content>
+                <md-input-container class='md-block'>
+                    <md-checkbox name='cerrarFicha' aria-label='Cerrar Ficha' ng-model='ficha.cerrarFicha'>Cerrar Ficha</md-checkbox>
+                </md-input-container>
+
+                <div>
+                    <!-- Cierre Ficha -->
+                    <md-input-container class='md-block'>
+                        <label>Motivo</label>
+                        <md-select ng-model='ficha.motivoCierre'>
+                            <md-option ng-value='option' ng-repeat='option in motivos'>
+                                {{ option.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class='md-block'>
+                        <label>Observaciones</label>
+                        <input name='observacionesCierre' ng-model='ficha.observacionesCierre'>
+                    </md-input-container>
+                </div>
+                <!-- End Cierre Ficha -->
+
+                <md-input-container class='md-block'>
+                    <md-checkbox name='asignarTrabajo' aria-label='Asignar Trabajo' ng-model='ficha.asignarTrabajo'>Asignar Trabajo</md-checkbox>
+                </md-input-container>
+
+                <div>
+                    <!-- Asignar Trabajo -->
+                    <md-input-container class='md-block'>
+                        <label>Motivo</label>
+                        <md-select ng-model='ficha.motivoAsignacion'>
+                            <md-option ng-value='option' ng-repeat='option in motivos'>
+                                {{ option.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class='md-block'>
+                        <label>Observaciones</label>
+                        <input name='observacionesAsignacion' ng-model='ficha.observacionesAsignacion'>
+                    </md-input-container>
+                </div>
+                <!-- End Asignar Trabajo -->
+
+                <div>
+                    <md-button type="Buttton">Guardar</md-button>
+                </div>
+            </form>
+        </md-content>
+    </div>
 </div>

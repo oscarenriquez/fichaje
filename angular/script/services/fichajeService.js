@@ -24,10 +24,8 @@
             return promise;*/
 
             return new Promise(function(resolve, reject) {
-                $timeout(function() {
-                    var arreglo = [];
-                    resolve(arreglo);
-                }, 1000);
+                var arreglo = [];
+                resolve(arreglo);
             });
         };
 

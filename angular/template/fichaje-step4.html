@@ -1,8 +1,31 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Entrevista</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
-
-    </md-content>
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Entrevista</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="step4.formFicha">
+                <md-input-container class="md-block">
+                    <label>Nombre</label>
+                    <input name="nombreContacto" ng-model="ficha.nombreContacto">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Tipo Contacto</label>
+                    <md-select ng-model="ficha.tipoContacto">
+                        <md-option ng-value="value">
+                            MOVIL
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>No. Contacto</label>
+                    <input name="noContacto" ng-model="ficha.noContacto">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>E-mail</label>
+                    <input name="emailContacto" ng-model="ficha.emailContacto">
+                </md-input-container>
+            </form>
+        </md-content>
+    </div>
 </div>

@@ -1,8 +1,32 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Almacenamiento</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
-        
-    </md-content>
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Almacenamiento</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form>
+                <div layout='row'>
+                    <md-input-container flex='50'>
+                        <label>Cisterna Elevada</label>
+                        <input name="cisternaElevada" ng-model="ficha.cisternaElevada">
+                    </md-input-container>
+                    <md-input-container flex='50'>
+                        <label>Cisterna Subt.</label>
+                        <input name="cisternaSubt" ng-model="ficha.cisternaSubt">
+                    </md-input-container>
+                </div>
+                <md-input-container class="md-block">
+                    <md-checkbox name="toneles" aria-label="Toneles" ng-model="ficha.toneles">Toneles</md-checkbox>
+                </md-input-container>
+                <div>
+                    <!-- Toneles -->
+                    <md-input-container class='md-block'>
+                        <label>Cantidad</label>
+                        <input name='cantAlmacen' ng-model='ficha.cantAlmacen'>
+                    </md-input-container>
+                </div>
+                <!-- End Toneles -->
+            </form>
+        </md-content>
+    </div>
 </div>

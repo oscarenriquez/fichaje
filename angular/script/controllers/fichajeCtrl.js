@@ -1,12 +1,24 @@
 (function() {
-    TrabajoCampo.FichajeCtrl = function($state, flowFichaje) {
+    TrabajoCampo.FichajeCtrl = function($timeout, $state, flowFichaje) {
         var scope = this;
         scope.flow = flowFichaje;
+        scope.flow.reset();
         scope.prev = function() {
-            $state.go(scope.flow.prev);
+            if (!scope.flow.isFirst) {
+                scope.flow.prev();
+                $timeout(function() {
+                    $state.go(scope.flow.prevStep);
+
+                }, 100);
+            }
         }
         scope.next = function() {
-            $state.go(scope.flow.next);
+            if (!scope.flow.isLast) {
+                scope.flow.next();
+                $timeout(function() {
+                    $state.go(scope.flow.nextStep);
+                }, 100);
+            }
         }
 
         $state.transitionTo(scope.flow.initStep);

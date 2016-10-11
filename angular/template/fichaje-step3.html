@@ -1,8 +1,52 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Carga de Datos</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
-
-    </md-content>
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Carga de Datos</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="step3.formFicha">
+                <md-input-container class="md-block">
+                    <label>Raz&oacute;n social</label>
+                    <input name="razonSocial" ng-model="ficha.razonSocial">
+                </md-input-container>
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <label>Toma de lectura</label>
+                        <input name="tomaLectura" ng-model="ficha.tomaLectura">
+                    </md-input-container>
+                    <md-input-container flex="50">
+                        <label>Estado Medidor</label>
+                        <md-select ng-model="ficha.estadoMedidor">
+                            <md-option value="1">
+                                Mal Estado
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout="row" flex>
+                    <lf-ng-md-file-input lf-files='files' flex> </lf-ng-md-file-input>
+                </div>
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <label>Medidor izquierdo</label>
+                        <input name="medIzquierdo" ng-model="ficha.medIzquierdo">
+                    </md-input-container>
+                    <md-input-container flex="50">
+                        <label>Lec. Med. izquierdo</label>
+                        <input name="lecMedIzquierdo" ng-model="ficha.ledMedIzquierdo">
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <label>Medidor derecho</label>
+                        <input name="medDerecho" ng-model="ficha.medDerecho">
+                    </md-input-container>
+                    <md-input-container flex="50">
+                        <label>Lec. Med. derecho</label>
+                        <input name="lecMedDerecho" ng-model="ficha.ledMedDerecho">
+                    </md-input-container>
+                </div>
+            </form>
+        </md-content>
+    </div>
 </div>

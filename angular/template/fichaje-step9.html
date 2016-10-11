@@ -1,8 +1,63 @@
-<div layout-padding>
-    <md-toolbar class="md-hue-2">
-        <span>Servicios</span>
-    </md-toolbar>
-    <md-content class="md-whiteframe-1dp">
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Abastecimiento</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="step6.formFicha">
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="ficha.empagua" aria-label="Empagua">
+                        Empagua
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.mariscal" aria-label="Mariscal">
+                        Mariscal
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.pipas" aria-label="Pipas">
+                        Pipas
+                    </md-checkbox>
+                    <md-checkbox ng-model="ficha.pozoPropio" aria-label="Pozo Propio">
+                        Pozo Propio
+                    </md-checkbox>
+                </md-input-container>
+                <div>
+                    <!-- Pipas -->
+                    <md-input-container class='md-block'>
+                        <label>Frecuencia</label>
+                        <md-select ng-model='ficha.frecuenciaPipas'>
+                            <md-option ng-value='option' ng-repeat='option in frecuencia'>
+                                {{ option.description }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
 
-    </md-content>
+                    <md-input-container class='md-block'>
+                        <label>Cantidad</label>
+                        <input name='cantidadPipas' ng-model='ficha.cantidadPipas'>
+                    </md-input-container>
+                </div>
+                <!-- End Pipas -->
+            </form>
+        </md-content>
+    </div>
+</div>
+<md-select ng-model='ficha.motivoAsignacion'>
+    <md-option ng-value='option' ng-repeat='option in motivos'>
+        {{ option.description }}
+    </md-option>
+</md-select>
+</md-input-container>
+
+<md-input-container class='md-block'>
+    <label>Observaciones</label>
+    <input name='observacionesAsignacion' ng-model='ficha.observacionesAsignacion'>
+</md-input-container>
+</div>
+<!-- End Asignar Trabajo -->
+
+<div>
+    <md-button type="Buttton">Guardar</md-button>
+</div>
+</form>
+</md-content>
+</div>
 </div>

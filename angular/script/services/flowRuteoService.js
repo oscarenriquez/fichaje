@@ -1,9 +1,8 @@
 (function() {
-    angular.module("TrabajoCampo").factory("flowFichaje", function FlowFichajeProvider($state) {
+    angular.module("TrabajoCampo").factory("flowRuteo", function FlowFichajeProvider($state) {
         var stepList = new Array();
-        // Listado de pantallas
-        stepList.push("fichaje.step1");
-        stepList.push("fichaje.step2");
+        // Listado de pantallas        
+        stepList.push("fichaje.datosMed");
         stepList.push("fichaje.step3");
         stepList.push("fichaje.step4");
         stepList.push("fichaje.step5");
@@ -11,7 +10,7 @@
         stepList.push("fichaje.step7");
         stepList.push("fichaje.step8");
         stepList.push(["fichaje.step9", "fichaje.alcant1", "fichaje.alcant2"]);
-        stepList.push("fichaje.stepLast");
+        stepList.push("fichaje.asigTrabajo");
 
         var totalSteps = 0;
 
@@ -25,8 +24,8 @@
         return {
             stepList: stepList,
             totalSteps: totalSteps,
-            initStep: "fichaje.step1",
-            nextStep: "fichaje.step2",
+            initStep: "fichaje.datosMed",
+            nextStep: "fichaje.step3",
             prevStep: "",
             currentIndex: 0,
             currentIndexChild: -1,
@@ -37,8 +36,8 @@
             leftAnimate: "anim-slide-left",
             progressStep: 0,
             reset: function() {
-                this.initStep = "fichaje.step1";
-                this.nextStep = "fichaje.step2";
+                this.initStep = "fichaje.datosMed";
+                this.nextStep = "fichaje.step3";
                 this.prevStep = "";
                 this.progressStep = 0;
                 this.currentIndex = 0;

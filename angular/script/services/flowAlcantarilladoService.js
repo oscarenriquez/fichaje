@@ -1,5 +1,5 @@
 (function() {
-    angular.module("TrabajoCampo").factory("flowFichaje", function FlowFichajeProvider($state) {
+    angular.module("TrabajoCampo").factory("flowAlcantarillado", function FlowAlcantarilladoProvider($state) {
         var stepList = new Array();
         // Listado de pantallas
         stepList.push("fichaje.step1");
@@ -8,9 +8,8 @@
         stepList.push("fichaje.step4");
         stepList.push("fichaje.step5");
         stepList.push("fichaje.step6");
-        stepList.push("fichaje.step7");
-        stepList.push("fichaje.step8");
-        stepList.push(["fichaje.step9", "fichaje.alcant1", "fichaje.alcant2"]);
+        stepList.push("fichaje.alcant2");
+        stepList.push("fichaje.step9");
         stepList.push("fichaje.stepLast");
 
         var totalSteps = 0;
@@ -52,7 +51,6 @@
             move: function() {
                 var currentSteps = this.currentIndex + 1 + this.currentIndexChild + 1;
                 this.progressStep = (100 / this.totalSteps) * currentSteps;
-
                 if (this.currentIndex == (this.stepList.length - 1)) {
                     this.isLast = true;
                     this.progressStep = 100;
@@ -63,7 +61,7 @@
                     this.isFirst = true;
                     this.progressStep = 0;
                 } else {
-                    this.isFirst = false;
+                    this.isFirst = false;                    
                 }
             },
             next: function(hasChild) {
@@ -89,7 +87,7 @@
                         this.nextStep = item;
                     }
                 }
-                this.move();
+                this.move(); // Mueve la pantalla
                 this.currentAnimate = this.leftAnimate;
             },
             prev: function(hasChild) {

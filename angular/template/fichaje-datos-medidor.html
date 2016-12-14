@@ -1,0 +1,31 @@
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Datos del Medidor</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="datosMed.formFicha">
+                <md-input-container class="md-block">
+                    <label>Nombre</label>
+                    <input name="nombre" ng-model="ficha.model.nombre" ng-disabled="ficha.medidorCorrecto" required>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Direcci&oacute;n</label>
+                    <input name="direccion" ng-model="ficha.model.direccion" ng-disabled="ficha.medidorCorrecto" required>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Medidor</label>
+                    <input name="medidor" ng-model="ficha.model.medidor" type="tel" required>
+                    <div ng-messages="datosMed.formFicha.medidor.$error" role="alert">
+                        <div ng-message="required">Debe de ingresar el medidor.</div>
+                    </div>
+                </md-input-container>
+                <div layout-padding layout="row" layout-align="center center">
+                    <md-button class="md-raised md-primary" aria-label="Consultar" ng-disabled="!datosMed.formFicha.medidor.valid" ng-click="ficha.validaMedidor()">
+                        Consultar Medidor
+                    </md-button>
+                </div>
+            </form>
+        </md-content>
+    </div>
+</div>

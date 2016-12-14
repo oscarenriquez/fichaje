@@ -7,43 +7,64 @@
             <form name="step3.formFicha">
                 <md-input-container class="md-block">
                     <label>Raz&oacute;n social</label>
-                    <input name="razonSocial" ng-model="ficha.razonSocial">
+                    <input name="razonSocial" ng-model="ficha.model.razonSocial" md-maxlength="50">
+                    <div ng-messages="step3.formFicha.razonSocial.$error" role="alert">
+                        <div ng-message="md-maxlength">
+                            La Raz&oacute;n social debe de ser menor a 50 caracteres de largo.
+                        </div>
+                    </div>
                 </md-input-container>
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Toma de lectura</label>
-                        <input name="tomaLectura" ng-model="ficha.tomaLectura">
+                        <input name="lecturaMedidor" ng-model="ficha.model.lecturaMedidor" type="tel">
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>Estado Medidor</label>
-                        <md-select ng-model="ficha.estadoMedidor">
-                            <md-option value="1">
-                                Mal Estado
+                        <md-select name="estadoMed" ng-model="ficha.model.estadoMed" aria-label="Estado Medidor" required>
+                            <md-option value="{{item.ID}}" ng-repeat="item in ficha.combos.estadosMedidor | filter: ficha.filterCombo ">
+                                {{ item.DESCRIPCION | uppercase }}
                             </md-option>
                         </md-select>
+                        <div ng-messages="step3.formFicha.estadoMed.$error" role="alert">
+                            <div ng-message="required">Debe de seleccionar el estado del medidor.</div>
+                        </div>
                     </md-input-container>
-                </div>
-                <div layout="row" flex>
-                    <lf-ng-md-file-input lf-files='files' flex> </lf-ng-md-file-input>
                 </div>
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Medidor izquierdo</label>
-                        <input name="medIzquierdo" ng-model="ficha.medIzquierdo">
+                        <input name="medidorIzquierdo" ng-model="ficha.model.medidorIzquierdo" type="tel">
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>Lec. Med. izquierdo</label>
-                        <input name="lecMedIzquierdo" ng-model="ficha.ledMedIzquierdo">
+                        <input name="lecMedIzquierdo" ng-model="ficha.model.lecMedIzquierdo" type="tel">
                     </md-input-container>
                 </div>
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Medidor derecho</label>
-                        <input name="medDerecho" ng-model="ficha.medDerecho">
+                        <input name="medidorDerecho" ng-model="ficha.model.medidorDerecho" type="medidor">
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>Lec. Med. derecho</label>
-                        <input name="lecMedDerecho" ng-model="ficha.ledMedDerecho">
+                        <input name="lecMedDerecho" ng-model="ficha.model.lecMedDerecho" type="tel">
+                    </md-input-container>
+                </div>
+
+                <!-- FOTOGRAFIAS -->
+                <div ng-if="!ficha.toUpdate">
+                    <md-input-container class='md-block'>
+                        <md-checkbox name='tomarFotografia' aria-label='Tomar Fotografias' ng-model='ficha.model.tomarFotografias'>Tomar Fotografias</md-checkbox>
+                    </md-input-container>
+                    <md-input-container class="md-block" ng-if="ficha.model.tomarFotografias">
+                        <lf-ng-md-file-input ng-disabled="ficha.confirmaFotos" lf-api="ficha.apiFile" name="fotos" lf-files="ficha.fotos.datos" lf-browse-label="Abrir" lf-remove-label="Remover" lf-filesize="10MB" lf-totalsize="100MB" lf-mimetype="image/*" preview multiple></lf-ng-md-file-input>
+                        <div ng-messages="step3.formFicha.fotos.$error" style="color:red;">
+                            <div ng-message="filesize">Archivo demasiado grande, debe de ser menor a 12MB.</div>
+                            <div ng-message="totalsize">El total de Imagenes sobrepasa el maximo de 100MB.</div>
+                            <div ng-message="mimetype">Tipo de archivo incorrecto, solo esta permitido imagenes.</div>
+                        </div>
+                        <md-button ng-disabled="ficha.confirmaFotos" class="md-raised md-warn" ng-click="ficha.cargarImagen($event, 'F')">Confirmar</md-button>
                     </md-input-container>
                 </div>
             </form>

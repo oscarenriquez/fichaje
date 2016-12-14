@@ -5,9 +5,9 @@
         </md-tab-label>
         <md-tab-body>
             <div layout-padding ng-show="fichas.listFichas.length > 0">
-                <md-autocomplete md-search-text="fichas.searchText" md-items="item in fichas.listFichas | filter:fichasvm.searchText" md-item-text="item.who" md-min-length="3" placeholder="Buscar">
+                <md-autocomplete md-search-text="fichas.searchText" md-items="item in fichas.listFichas | filter:fichas.searchText" md-item-text="item.medidor" md-min-length="3" placeholder="Buscar">
                     <md-item-template>
-                        <span md-highlight-text="fichas.searchText" md-highlight-flags="^i">{{item.who}}</span>
+                        <span md-highlight-text="fichas.searchText" md-highlight-flags="^i">{{item.medidor}}</span>
                     </md-item-template>
                     <md-not-found>
                         No hay concidencias con "{{fichas.searchText}}".
@@ -15,9 +15,11 @@
                 </md-autocomplete>
             </div>
             <md-content class="scrollable-nav-content" ng-class="{'top-clear' : fichas.listFichas.length === 0}">
-                <h4 class="text-center" ng-hide="fichas.listFichas.length > 0">No hay Informacion</h4>
+                <div layout="row" layout-align="center center" ng-hide="fichas.listFichas.length > 0">
+                    <h4>No hay Informacion</h4>
+                </div>
                 <md-list class="md-dense">
-                    <md-list-item class="md-2-line" ng-repeat="item in fichas.listFichas | filter:fichas.searchText ">
+                    <md-list-item class="md-2-line" ng-repeat="item in fichas.listFichas | filter:fichas.searchText " ng-class="{'priority-bkg': item.prioridad}">
                         <div class="md-list-item-text">
                             <h3>{{ item.medidor }}</h3>
                             <h4>{{ item.tipoDes }}</h4>
@@ -27,14 +29,19 @@
                                 <md-icon class="material-icons">messages</md-icon>
                             </md-button>
                             <md-menu-content width="4">
-                                <md-menu-item>
-                                    <md-button>
-                                        Redial
+                                <md-menu-item ng-if="item.fichado == 'N'">
+                                    <md-button ng-click="fichas.goFichaje(item.fichaId, false, item.tipo)">
+                                        Agregar detalle
                                     </md-button>
                                 </md-menu-item>
-                                <md-menu-item>
-                                    <md-button>
-                                        Check voicemail
+                                <md-menu-item ng-if="item.fichado == 'S'">
+                                    <md-button ng-click="fichas.goFichaje(item.fichaId, true, item.tipo)">
+                                        Editar detalle
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item ng-if="item.fichado == 'S'">
+                                    <md-button ng-click="fichas.goUploadPhotos(item.fichaId)" ng-disabled="main.loadingFotos">
+                                        Cargar Fotografias <span ng-if="main.loadingFotos">(Cargando...)</span>
                                     </md-button>
                                 </md-menu-item>
                                 <md-menu-divider></md-menu-divider>
@@ -56,7 +63,9 @@
         </md-tab-label>
         <md-tab-body>
             <md-content class="scrollable-nav-content top-clear">
-                <h4 class="text-center" ng-hide="fichas.listRuteo.length > 0">No hay Informacion</h4>
+                <div layout="row" layout-align="center center" ng-hide="fichas.listRuteo.length > 0">
+                    <h4>No hay Informacion</h4>
+                </div>
                 <md-list class="md-dense">
                     <md-list-item class="md-2-line" ng-repeat="item in fichas.listRuteo">
                         <div class="md-list-item-text">
@@ -68,17 +77,11 @@
                                 <md-icon class="material-icons">messages</md-icon>
                             </md-button>
                             <md-menu-content width="4">
-                                <md-menu-item>
-                                    <md-button>
-                                        Redial
+                                <md-menu-item ng-if="item.fichado == 'S'">
+                                    <md-button ng-click="fichas.goUploadPhotos(item.fichaId)" ng-disabled="main.loadingFotos">
+                                        Cargar Fotografias <span ng-if="main.loadingFotos">(Cargando...)</span>
                                     </md-button>
                                 </md-menu-item>
-                                <md-menu-item>
-                                    <md-button>
-                                        Check voicemail
-                                    </md-button>
-                                </md-menu-item>
-                                <md-menu-divider></md-menu-divider>
                                 <md-menu-item>
                                     <md-button ng-click="main.viewDetail($event, item.cliente, item.direccion)">
                                         Ver informaci&oacute;n
@@ -89,7 +92,7 @@
                     </md-list-item>
                 </md-list>
             </md-content>
-            <md-button class="md-fab md-fab-bottom-right" ng-click="fichas.goFichaje()">
+            <md-button class="md-fab md-fab-bottom-right" ng-click="fichas.goFichaje(null, false, 'R')">
                 <md-icon class="material-icons">add</md-icon>
             </md-button>
         </md-tab-body>

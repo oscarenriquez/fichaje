@@ -4,38 +4,51 @@
             <span class="md-subhead">Abastecimiento</span>
         </md-toolbar>
         <md-content class="md-whiteframe-1dp">
-            <form name="step6.formFicha">
+            <form name="step7.formFicha">
                 <md-input-container class="md-block">
-                    <md-checkbox ng-model="ficha.empagua" aria-label="Empagua">
+                    <md-checkbox name="empagua" ng-model="ficha.model.empagua" aria-label="Empagua">
                         Empagua
                     </md-checkbox>
-                    <md-checkbox ng-model="ficha.mariscal" aria-label="Mariscal">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox name="mariscal" ng-model="ficha.model.mariscal" aria-label="Mariscal">
                         Mariscal
                     </md-checkbox>
-                    <md-checkbox ng-model="ficha.pipas" aria-label="Pipas">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox name="pipas" ng-model="ficha.model.pipas" aria-label="Pipas">
                         Pipas
                     </md-checkbox>
-                    <md-checkbox ng-model="ficha.pozoPropio" aria-label="Pozo Propio">
-                        Pozo Propio
-                    </md-checkbox>
                 </md-input-container>
-                <div>
+                <div ng-if="ficha.model.pipas" flex-offset="10">
                     <!-- Pipas -->
+                    <md-divider></md-divider>
                     <md-input-container class='md-block'>
                         <label>Frecuencia</label>
-                        <md-select ng-model='ficha.frecuenciaPipas'>
-                            <md-option ng-value='option' ng-repeat='option in frecuencia'>
-                                {{ option.description }}
+                        <md-select name="frecuencia" ng-model='ficha.model.frecuencia' aria-label="Frecuencia" required>
+                            <md-option value='{{ item.ID }}' ng-repeat='item in ficha.combos.frecuencia'>
+                                {{ item.DESCRIPCION | uppercase }}
                             </md-option>
                         </md-select>
+                        <div ng-messages="step7.formFicha.frecuencia.$error" role="alert">
+                            <div ng-message="required">Debe de seleccionar la frecuencia.</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container class='md-block'>
                         <label>Cantidad</label>
-                        <input name='cantidadPipas' ng-model='ficha.cantidadPipas'>
+                        <input name='cantidadPipas' ng-model='ficha.model.cantidadPipas' required>
+                        <div ng-messages="step7.formFicha.cantidadPipas.$error" role="alert">
+                            <div ng-message="required">Debe de ingresar la cantidad de pipas.</div>
+                        </div>
                     </md-input-container>
                 </div>
                 <!-- End Pipas -->
+                <md-input-container class="md-block">
+                    <md-checkbox name="pozoPropio" ng-model="ficha.model.pozoPropio" aria-label="Pozo Propio">
+                        Pozo Propio
+                    </md-checkbox>
+                </md-input-container>
             </form>
         </md-content>
     </div>

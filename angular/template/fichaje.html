@@ -1,4 +1,5 @@
 <md-content layout="row" layout-fill>
+    <md-progress-linear class="md-warn" md-mode="determinate" value="{{ficha.flow.progressStep}}" style="z-index: 999999;"></md-progress-linear>
     <section id="fichaje" ui-view="fichaje" class="anim-in-out speed-transition {{ficha.flow.currentAnimate}}" data-anim-sync="true" data-anim-speed="500" md-swipe-left="ficha.next()" md-swipe-right="ficha.prev()">
     </section>
     <div flex></div>

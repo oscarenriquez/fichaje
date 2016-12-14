@@ -2,6 +2,7 @@
     TrabajoCampo.MainCtrl = function($scope, $mdToast, $mdDialog, $mdMedia, $log, $state, app) {
         var scope = this;
         scope.loading = false;
+        scope.loadingFotos = false;
         scope.history = true;
         scope.const = app.constante;
         scope.logout = app.logout;

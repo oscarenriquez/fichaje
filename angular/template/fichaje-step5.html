@@ -4,19 +4,37 @@
             <span class="md-subhead">Uso del Suelo</span>
         </md-toolbar>
         <md-content class="md-whiteframe-1dp">
-            <md-radio-group ng-model="ficha.usoSuelo">
-                <md-radio-button>
-                    Deshabitado
-                </md-radio-button>
-            </md-radio-group>
             <form name="step5.formFicha">
-                <md-input-container class="md-block">
+                <md-radio-group ng-model="ficha.model.usoSuelo" required>
+                    <md-radio-button value="D" class="md-primary">
+                        Deshabitado
+                    </md-radio-button>
+                    <md-radio-button value="H" class="md-primary">
+                        Habitado
+                    </md-radio-button>
+                    <md-radio-button value="B" class="md-primary">
+                        Baldio
+                    </md-radio-button>
+                    <md-radio-button value="E" class="md-primary">
+                        En construcci&oacute;n
+                    </md-radio-button>
+                </md-radio-group>
+                <div ng-messages="step5.formFicha.usoSuelo.$error" role="alert">
+                    <div ng-message="required">Debe de seleccionar el uso del suelo.</div>
+                </div>
+                <md-input-container class="md-block" ng-if="ficha.model.usoSuelo == 'H'" flex-offset="10">
                     <label>Cant. Habitantes</label>
-                    <input name="cantHabitantes" ng-model="ficha.cantHabitantes">
+                    <input name="habitantes" ng-model="ficha.model.habitantes" required type="tel">
+                    <div ng-messages="step5.formFicha.habitantes.$error" role="alert">
+                        <div ng-message="required">Debe de ingresar el n&uacute;mero de habitantes.</div>
+                    </div>
                 </md-input-container>
-                <md-input-container class="md-block">
+                <md-input-container class="md-block" ng-if="ficha.model.usoSuelo == 'E'" flex-offset="10">
                     <label>Cant. Trabajadores</label>
-                    <input name="cantTrabajadores" ng-model="ficha.cantTrabajadores">
+                    <input name="trabajadores" ng-model="ficha.model.trabajadores" required type="tel">
+                    <div ng-messages="step4.formFicha.trabajadores.$error" role="alert">
+                        <div ng-message="required">Debe de ingresar el n&uacute;mero de trabajadores.</div>
+                    </div>
                 </md-input-container>
             </form>
         </md-content>

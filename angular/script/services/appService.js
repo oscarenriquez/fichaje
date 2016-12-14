@@ -5,7 +5,7 @@
                 applicationName: ""
             },
             logout: function() {
-                $("<form method='POST' action='Session'><input name='key' type='hidden' value='-2' /></form>").submit();
+                $("<form method='POST' action='Session'><input name='key' type='hidden' value='-5' /></form>").submit();
             },
             back: function() {
                 $window.history.back();

@@ -7,132 +7,167 @@
             <form name="step6.formFicha">
                 <md-input-container class="md-block">
                     <label>Privado</label>
-                    <md-select ng-model="ficha.privado">
-                        <md-option>
-                            RESIDENCIAL
+                    <md-select name="subtPrivado" ng-model="ficha.model.subtPrivado" aria-label="tipoSuelo">
+                        <md-option value="{{ item.ID }}" ng-repeat="item in ficha.combos.tipoSuelo | filter: ficha.filterCombo">
+                            {{ item.DESCRIPCION | uppercase }}
                         </md-option>
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <md-checkbox ng-model="ficha.instGobierno" aria-label="Institucion de Gobierno">
+                    <md-checkbox ng-model="ficha.model.gobierno" aria-label="Institucion de Gobierno">
                         Instituci&oacute;n de Gobierno
                     </md-checkbox>
-                    <md-checkbox ng-model="ficha.fracionamiento" aria-label="Fracionamiento">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="ficha.model.fraccionamiento" aria-label="Fracionamiento">
                         Fraccionamiento
                     </md-checkbox>
-                    <md-checkbox ng-model="ficha.vivienda" aria-label="Vivienda">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="ficha.model.vivienda" aria-label="Vivienda">
                         Vivienda
                     </md-checkbox>
-                    <md-checkbox ng-model="ficha.comercio" aria-label="Comercio">
-                        Comercio
-                    </md-checkbox>
-                    <md-checkbox ng-model="ficha.industria" aria-label="Industria">
-                        Industria
-                    </md-checkbox>
-                    <md-checkbox ng-model="ficha.otros" aria-label="Otros">
-                        Otros
-                    </md-checkbox>
                 </md-input-container>
-                <div>
-                    <!-- Vivienda -->
-                    <div layout="row">
-                        <md-input-container flex="50">
-                            <md-checkbox name="unifamiliar" aria-label="Unifamiliar" ng-model="ficha.unifamiliar">Unifamiliar</md-checkbox>
-                        </md-input-container>
-                        <md-input-container flex="50">
-                            <md-checkbox name="condominio" aria-label="Condominio" ng-model="ficha.condominio">Condominio</md-checkbox>
-                        </md-input-container>
-                    </div>
 
-                    <md-input-container class="md-block">
-                        <!-- Unifamiliar -->
-                        <label>Cant. niveles</label>
-                        <input name="cantNiveles" ng-model="ficha.cantNiveles">
+                <div ng-if="ficha.model.vivienda" flex-offset="10">
+                    <!-- Vivienda -->
+                    <md-divider></md-divider>
+                    <md-input-container md-no-float>
+                        <md-radio-group layout="row" ng-model="ficha.model.tipoVivienda" required>
+                            <md-radio-button value="unifamiliar" flex="50"> Unifamiliar </md-radio-button>
+                            <md-radio-button value="condominio" flex="50"> Condominio </md-radio-button>
+                        </md-radio-group>
                     </md-input-container>
 
-                    <div>
-                        <!-- Condominio -->
-                        <div layout="row">
-                            <md-input-container flex="50">
-                                <md-checkbox name="vertical" aria-label="Vertical" ng-model="ficha.vertical">Vertical</md-checkbox>
-                            </md-input-container>
-                            <md-input-container flex="50">
-                                <md-checkbox name="horizontal" aria-label="Horizontal" ng-model="ficha.horizontal">Horizontal</md-checkbox>
-                            </md-input-container>
+                    <md-input-container class="md-block" ng-if="ficha.model.tipoVivienda == 'unifamiliar'" flex-offset="15">
+                        <!-- Unifamiliar -->
+                        <label>Cant. niveles</label>
+                        <input name="niveles" ng-model="ficha.model.niveles" type="tel" required>
+                        <div ng-messages="step6.formFicha.niveles.$error" role="alert">
+                            <div ng-message="required">Debe de ingresar el n&uacute;mero de niveles.</div>
                         </div>
+                    </md-input-container>
+
+                    <div ng-if="ficha.model.tipoVivienda == 'condominio'" flex-offset="15">
+                        <!-- Condominio -->
+                        <md-divider></md-divider>
+                        <md-input-container md-no-float>
+                            <md-radio-group layout="row" ng-model="ficha.model.tipoCondominio" requiered>
+                                <md-radio-button value="vertical" flex="50"> Vertical </md-radio-button>
+                                <md-radio-button value="horizontal" flex="50"> Horizontal </md-radio-button>
+                            </md-radio-group>
+                        </md-input-container>
 
                         <md-input-container class='md-block'>
                             <label>Cantidad</label>
-                            <input name='cantidad' ng-model='ficha.cantidad'>
+                            <input name='niveles' ng-model='ficha.model.niveles' required>
+                            <div ng-messages="step6.formFicha.niveles.$error" role="alert">
+                                <div ng-message="required">Debe de ingresar el n&uacute;mero de condominos.</div>
+                            </div>
                         </md-input-container>
                     </div>
 
                 </div>
                 <!-- END Vivienda -->
 
-                <div>
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="ficha.model.comercio" aria-label="Comercio">
+                        Comercio
+                    </md-checkbox>
+                </md-input-container>
+
+                <div ng-if="ficha.model.comercio" flex-offset="10">
                     <!-- Comercio -->
+                    <md-divider></md-divider>
                     <md-input-container class='md-block'>
                         <label>Venta de Productos</label>
-                        <md-select ng-model='ficha.ventaProductos'>
-                            <md-option ng-value='producto' ng-repeat='producto in productos'>
-                                {{ producto.description }}
+                        <md-select name="subtComercio" ng-model='ficha.model.subtComercio' aria-label="Venta de Productos" required>
+                            <md-option value="{{ item.ID }}" ng-repeat="item in ficha.combos.locales | filter: ficha.filterCombo">
+                                {{ item.DESCRIPCION | uppercase }}
                             </md-option>
                         </md-select>
+                        <div ng-messages="step6.formFicha.subtComercio.$error" role="alert">
+                            <div ng-message="required">Debe de seleccionar el tipo de comercio.</div>
+                        </div>
                     </md-input-container>
 
-                    <md-input-container class='md-block'>
+                    <md-input-container class='md-block' ng-if="ficha.model.subtComercio == 3">
                         <label>Cant. Locales</label>
-                        <input name='cantLocales' ng-model='ficha.cantLocales'>
+                        <input name='numLocales' ng-model='ficha.model.numLocales' required>
+                        <div ng-messages="step6.formFicha.numLocales.$error" role="alert">
+                            <div ng-message="required">Debe de ingresar la cantidad de locales.</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container class='md-block'>
                         <label>Servicios</label>
-                        <md-select ng-model='ficha.servicios'>
-                            <md-option ng-value='servicio' ng-repeat='servicio in servicios'>
-                                {{ servicio.description }}
+                        <md-select name="subtServicio" ng-model='ficha.model.subtServicio' aria-label="Servicios">
+                            <md-option value="{{ item.ID }}" ng-repeat="item in ficha.combos.servicios | filter: ficha.filterCombo">
+                                {{ item.DESCRIPCION | uppercase }}
                             </md-option>
                         </md-select>
                     </md-input-container>
 
                     <md-input-container class='md-block'>
                         <label>Almtos. Y Bebidas</label>
-                        <md-select ng-model='ficha.alimBebidas'>
-                            <md-option ng-value='alimBebidas' ng-repeat='alimBebidas in productosAlimentos'>
-                                {{ alimBebidas.description }}
+                        <md-select name="subtAlimentos" ng-model='ficha.model.subtAlimentos' aria-label="Alimentos Y Bebidas">
+                            <md-option value="{{ item.ID }}" ng-repeat="item in ficha.combos.alimentos | filter: ficha.filterCombo">
+                                {{ item.DESCRIPCION | uppercase }}
                             </md-option>
                         </md-select>
                     </md-input-container>
                 </div>
                 <!--END Comercio-->
-                <div>
+
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="ficha.model.industria" aria-label="Industria">
+                        Industria
+                    </md-checkbox>
+                </md-input-container>
+
+                <div ng-if="ficha.model.industria" flex-offset="10">
                     <!-- Industria -->
+                    <md-divider></md-divider>
                     <md-input-container class='md-block'>
                         <label>Tipo</label>
-                        <md-select ng-model='ficha.tipoIndustria'>
-                            <md-option ng-value='tipo' ng-repeat='tipo in tiposIndustria'>
-                                {{ tipo.description }}
+                        <md-select name="subtIndustria" ng-model='ficha.model.subtIndustria' aria-label="Tipo Industria">
+                            <md-option value="{{ item.ID }}" ng-repeat="item in ficha.combos.industria | filter: ficha.filterCombo">
+                                {{ item.DESCRIPCION | uppercase }}
                             </md-option>
                         </md-select>
+                        <div ng-messages="step6.formFicha.subtIndustria.$error" role="alert">
+                            <div ng-message="required">Debe de seleccionar el tipo de industria.</div>
+                        </div>
                     </md-input-container>
                 </div>
                 <!--END Industria-->
-                <div>
+
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="ficha.model.otros" aria-label="Otros">
+                        Otros
+                    </md-checkbox>
+                </md-input-container>
+
+                <div ng-if="ficha.model.otros" flex-offset="10">
                     <!-- Otros -->
+                    <md-divider></md-divider>
                     <md-input-container class='md-block'>
                         <label>Tipos</label>
-                        <md-select ng-model='ficha.tipoOtros'>
-                            <md-option ng-value='tipo' ng-repeat='tipo in tipoOtros'>
-                                {{ tipo.description }}
+                        <md-select name="subtOtros" ng-model='ficha.model.subtOtros' aria-label="Tipo de Otros">
+                            <md-option value="{{ item.ID }}" ng-repeat="item in ficha.combos.otros | filter: ficha.filterCombo">
+                                {{ item.DESCRIPCION | uppercase }}
                             </md-option>
                         </md-select>
+                        <div ng-messages="step6.formFicha.subtOtros.$error" role="alert">
+                            <div ng-message="required">Debe de seleccionar el tipo de otros.</div>
+                        </div>
                     </md-input-container>
                 </div>
                 <!--END Otros-->
 
                 <md-input-container class='md-block'>
                     <label>Observaciones</label>
-                    <input name='observaciones' ng-model='ficha.observaciones'>
+                    <textarea name='observaciones' ng-model='ficha.model.observaciones'></textarea>
                 </md-input-container>
             </form>
         </md-content>

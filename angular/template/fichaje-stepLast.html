@@ -1,0 +1,101 @@
+<div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Resultado Ficha</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="stepLast.formFicha">
+                <div ng-if="ficha.toUpdate">
+                    <md-input-container class='md-block'>
+                        <md-checkbox name='resultadoFicha' aria-label='Resultado Ficha' ng-model='ficha.model.resultadoFicha'>Resultado Ficha</md-checkbox>
+                    </md-input-container>
+                </div>
+                <div ng-if="!ficha.toUpdate || ficha.model.resultadoFicha">
+                    <md-radio-group ng-model="ficha.model.resultF" required>
+                        <md-radio-button value="0" class="md-primary">
+                            Carga Informaci&oacute;n
+                        </md-radio-button>
+                        <md-radio-button value="2" class="md-primary">
+                            Cerrar Ficha
+                        </md-radio-button>
+                        <md-radio-button value="1" class="md-primary">
+                            Asignar Trabajo
+                        </md-radio-button>
+                    </md-radio-group>
+                    <div ng-if="ficha.model.resultF == '2'" flex-offset="10">
+                        <!-- Cierre Ficha -->
+                        <md-divider></md-divider>
+                        <md-input-container class='md-block'>
+                            <label>Motivo Cierre</label>
+                            <md-select name="motivoCierre" ng-model='ficha.model.motivoCierre' aria-label="Motivo Cierre" required>
+                                <md-option value='{{ item.ID }}' ng-repeat='item in ficha.combos.cierreFicha | filter:ficha.filterCombo'>
+                                    {{ item.DESCRIPCION | uppercase }}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepLast.formFicha.motivoCierre.$error" role="alert">
+                                <div ng-message="required">Debe de seleccionar el motivo de cierre.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class='md-block'>
+                            <label>Observaciones</label>
+                            <textarea name='observacionesCierre' ng-model='ficha.model.observacionesCierre' required></textarea>
+                            <div ng-messages="stepLast.formFicha.observacionesCierre.$error" role="alert">
+                                <div ng-message="required">Debe de ingresar las Observaciones.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <!-- End Cierre Ficha -->
+
+                    <div ng-if="ficha.model.resultF == '1'" flex-offset="10">
+                        <!-- Asignar Trabajo -->
+                        <md-divider></md-divider>
+                        <md-input-container class='md-block'>
+                            <label>Trabajo</label>
+                            <md-select name="trabajo" ng-model='ficha.model.trabajo' aria-label="Trabajo" required>
+                                <md-option value='{{ item.ID }}' ng-repeat='item in ficha.combos.trabajos | filter:ficha.filterCombo'>
+                                    {{ item.DESCRIPCION | uppercase }}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepLast.formFicha.trabajo.$error" role="alert">
+                                <div ng-message="required">Debe de seleccionar la asignaci&oacute;n de trabajo.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class='md-block'>
+                            <label>Motivo</label>
+                            <md-select ng-model='ficha.model.motivoTrabajo' aria-label='Motivo' required>
+                                <md-option value='{{ item.ID }}' ng-repeat='item in ficha.combos.motivosTrabajo | filter:ficha.filterCombo'>
+                                    {{ item.DESCRIPCION | uppercase }}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepLast.formFicha.motivoTrabajo.$error" role="alert">
+                                <div ng-message="required">Debe de seleccionar el motivo.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class='md-block'>
+                            <label>Observaciones</label>
+                            <textarea name='observacionesTrabajo' ng-model='ficha.model.observacionesTrabajo' required></textarea>
+                            <div ng-messages="stepLast.formFicha.observacionesTrabajo.$error" role="alert">
+                                <div ng-message="required">Debe de ingresar las Observaciones.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                </div>
+                <!-- End Asignar Trabajo -->
+
+                <div layout-padding layout="row" layout-align="center center" ng-if="!ficha.toUpdate">
+                    <md-button class="md-raised md-primary" aria-label="Guardar" ng-disabled="!stepLast.valid && !ficha.loadingFotos && !ficha.loadingFotosAlcan" ng-click="ficha.modifica($event)">
+                        {{ ficha.textobutton }}
+                    </md-button>
+                </div>
+
+                <div layout-padding layout="row" layout-align="center center" ng-if="ficha.toUpdate">
+                    <md-button class="md-raised md-accent" aria-label="Actualizar" ng-disabled="!stepLast.valid" ng-click="ficha.modifica($event)">Actualizar</md-button>
+                </div>
+            </form>
+        </md-content>
+    </div>
+</div>

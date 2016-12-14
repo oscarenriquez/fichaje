@@ -1,0 +1,38 @@
+<div class="scrollable-nav-content top-clear bottom-space {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Alcantarillado</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="alcant1.formFicha">
+                <md-input-container class='md-block'>
+                    <label>Estado medidor</label>
+                    <md-select name="estadoMedAlcan" ng-model='ficha.model.estadoMedAlcan' aria-label='Estado medidor'>
+                        <md-option value="{{item.ID}}" ng-repeat="item in ficha.combos.estadosMedidor | filter: ficha.filterCombo ">
+                            {{ item.DESCRIPCION | uppercase }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class='md-block'>
+                    <label>Toma de lectura</label>
+                    <input name='lecturaMedidorAlcant' ng-model='ficha.model.lecturaMedidorAlcant' type="lect">
+                </md-input-container>
+                <div ng-if="!ficha.toUpdate">
+                    <md-input-container class='md-block'>
+                        <md-checkbox name='tomarFotografiaAlcan' aria-label='Tomar Fotografias' ng-model='ficha.model.tomarFotografiasAlcan'>Tomar Fotografias</md-checkbox>
+                    </md-input-container>
+                    <md-input-container class="md-block" ng-if="ficha.model.tomarFotografiasAlcan" ng-if="ficha.toUpdate">
+                        <lf-ng-md-file-input ng-disabled="ficha.confirmaFotosAlcan" lf-api="ficha.apiFileAlcan" name="fotosAlcan" lf-files="ficha.fotos.alcan" lf-browse-label="Abrir" lf-remove-label="Remover" lf-filesize="12MB" lf-totalsize="60MB" lf-mimetype="image/*" preview
+                            multiple></lf-ng-md-file-input>
+                        <div ng-messages="alcant1.formFicha.fotosAlcan.$error" style="color:red;">
+                            <div ng-message="filesize">Archivo demasiado grande, debe de ser menor a 12MB.</div>
+                            <div ng-message="totalsize">El total de Imagenes sobrepasa el maximo de 60MB.</div>
+                            <div ng-message="mimetype">Tipo de archivo incorrecto, solo esta permitido imagenes.</div>
+                        </div>
+                        <md-button ng-disabled="ficha.confirmaFotosAlcan" class="md-raised md-warn" ng-click="ficha.cargarImagen($event, 'A')">Confirmar</md-button>
+                    </md-input-container>
+                </div>
+            </form>
+        </md-content>
+    </div>
+</div>

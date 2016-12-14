@@ -1,0 +1,66 @@
+<div class="scrollable-nav-content top-clear bottom-space {{ficha.flow.currentAnimate}}">
+    <div layout-padding>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Abastecimiento</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="alcant2.formFicha">
+                <md-input-container class='md-block'>
+                    <md-checkbox name='empaguaAlcan' aria-label='Empagua' ng-model='ficha.model.empaguaAlcan'>Empagua</md-checkbox>
+                </md-input-container>
+                <md-input-container class='md-block'>
+                    <md-checkbox name='mariscalAlcan' aria-label='Mariscal' ng-model='ficha.model.mariscalAlcan'>Mariscal</md-checkbox>
+                </md-input-container>
+            </form>
+        </md-content>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Instalaciones</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="alcant21.formFicha">
+                <md-input-container class='md-block'>
+                    <label>Candelas Visibles</label>
+                    <input name='candelasVisibles' ng-model='ficha.model.candelasVisibles' type="tel">
+                </md-input-container>
+                <md-input-container class='md-block'>
+                    <md-checkbox name='plantaTratamiento' aria-label='Planta de tratamiento' ng-model='ficha.model.plantaTratamiento'>Planta de tratamiento</md-checkbox>
+                </md-input-container>
+                <md-input-container class='md-block'>
+                    <md-checkbox name='pozoAbsorcion' aria-label='Pozo Absorcion' ng-model='ficha.model.pozoAbsorcion'>Pozo de Absorci&oacute;n</md-checkbox>
+                </md-input-container>
+                <md-input-container class='md-block' flex-offset="10" ng-if="ficha.model.pozoAbsorcion">
+                    <label>Cantidad</label>
+                    <input name='cantPozoAbsor' ng-model='ficha.model.cantPozoAbsor' type="tel">
+                </md-input-container>
+            </form>
+        </md-content>
+        <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+            <span class="md-subhead">Almacenamiento</span>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp">
+            <form name="alcant22.formFicha">
+                <div layout='row'>
+                    <md-input-container flex='50'>
+                        <label>Cisterna Elevada</label>
+                        <input name='cistElevadaAlcan' ng-model='ficha.model.cistElevadaAlcan' type="tel">
+                    </md-input-container>
+                    <md-input-container flex='50'>
+                        <label>Cisterna Subt.</label>
+                        <input name='cistSubterraneaAlcan' ng-model='ficha.model.cistSubterraneaAlcan' type="tel">
+                    </md-input-container>
+                </div>
+                <md-input-container class='md-block'>
+                    <md-checkbox name='tonelesAlcan' aria-label='Toneles' ng-model='ficha.model.tonelesAlcan'>Toneles</md-checkbox>
+                </md-input-container>
+                <md-input-container class='md-block' flex-offset="10" ng-if="ficha.model.tonelesAlcan">
+                    <label>Cantidad</label>
+                    <input name='cantTonelesAlcan' ng-model='ficha.model.cantTonelesAlcan' type="tel">
+                </md-input-container>
+                <md-input-container class='md-block'>
+                    <label>Observaciones</label>
+                    <textarea name='observaciones2' ng-model='ficha.model.observaciones2'></textarea>
+                </md-input-container>
+            </form>
+        </md-content>
+    </div>
+</div>

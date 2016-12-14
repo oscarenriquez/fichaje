@@ -7,23 +7,31 @@
             <form name="step4.formFicha">
                 <md-input-container class="md-block">
                     <label>Nombre</label>
-                    <input name="nombreContacto" ng-model="ficha.nombreContacto">
+                    <input name="nombreEntrevistado" ng-model="ficha.model.nombreEntrevistado">
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>Tipo Contacto</label>
-                    <md-select ng-model="ficha.tipoContacto">
-                        <md-option ng-value="value">
-                            MOVIL
+                    <md-select name="tipoTelefono" ng-model="ficha.model.tipoTelefono" aria-label="Tipo Contacto">
+                        <md-option value="{{ item.ID }}" ng-repeat="item in ficha.combos.tipoContacto">
+                            {{ item.DESCRIPCION | uppercase }}
                         </md-option>
                     </md-select>
                 </md-input-container>
-                <md-input-container class="md-block">
+                <md-input-container class="md-block" ng-if="ficha.model.tipoTelefono != '0'" flex-offset="10">
                     <label>No. Contacto</label>
-                    <input name="noContacto" ng-model="ficha.noContacto">
+                    <input name="telefonoContacto" ng-model="ficha.model.telefonoContacto" type="tel" required>
+                    <div ng-messages="step4.formFicha.telefonoContacto.$error" role="alert">
+                        <div ng-message="required">Debe de ingresar el n&uacute;mero de contacto.</div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>E-mail</label>
-                    <input name="emailContacto" ng-model="ficha.emailContacto">
+                    <input name="email" ng-model="ficha.model.email" type="email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+                    <div ng-messages="step4.formFicha.email.$error" role="alert">
+                        <div ng-message-exp="['minlength', 'maxlength', 'pattern']">
+                            El email debe ser entre 10 y 100 caracteres de largo y debe lucir como una direcci&oacute;n de correo electronico.
+                        </div>
+                    </div>
                 </md-input-container>
             </form>
         </md-content>

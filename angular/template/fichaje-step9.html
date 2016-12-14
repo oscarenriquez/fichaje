@@ -1,63 +1,68 @@
 <div layout-padding class="scrollable-nav-content top-clear bottom-space speed-transition {{ficha.flow.currentAnimate}}">
     <div layout-padding>
         <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
-            <span class="md-subhead">Abastecimiento</span>
+            <span class="md-subhead">Servicios</span>
         </md-toolbar>
         <md-content class="md-whiteframe-1dp">
-            <form name="step6.formFicha">
-                <md-input-container class="md-block">
-                    <md-checkbox ng-model="ficha.empagua" aria-label="Empagua">
-                        Empagua
-                    </md-checkbox>
-                    <md-checkbox ng-model="ficha.mariscal" aria-label="Mariscal">
-                        Mariscal
-                    </md-checkbox>
-                    <md-checkbox ng-model="ficha.pipas" aria-label="Pipas">
-                        Pipas
-                    </md-checkbox>
-                    <md-checkbox ng-model="ficha.pozoPropio" aria-label="Pozo Propio">
-                        Pozo Propio
-                    </md-checkbox>
-                </md-input-container>
-                <div>
-                    <!-- Pipas -->
-                    <md-input-container class='md-block'>
-                        <label>Frecuencia</label>
-                        <md-select ng-model='ficha.frecuenciaPipas'>
-                            <md-option ng-value='option' ng-repeat='option in frecuencia'>
-                                {{ option.description }}
-                            </md-option>
-                        </md-select>
+            <form name="step9.formFicha">
+                <div layout='row'>
+                    <md-input-container flex='50'>
+                        <label>Sanitarios</label>
+                        <input name='sanitarios' ng-model='ficha.model.sanitarios' type="tel">
                     </md-input-container>
-
-                    <md-input-container class='md-block'>
-                        <label>Cantidad</label>
-                        <input name='cantidadPipas' ng-model='ficha.cantidadPipas'>
+                    <md-input-container flex='50'>
+                        <label>Lavamanos</label>
+                        <input name='lavamanos' ng-model='ficha.model.lavamanos' type="tel">
                     </md-input-container>
                 </div>
-                <!-- End Pipas -->
+                <div layout='row'>
+                    <md-input-container flex='50'>
+                        <label>Lavaplatos</label>
+                        <input name='lavaplatos' ng-model='ficha.model.lavaplatos' type="tel">
+                    </md-input-container>
+                    <md-input-container flex='50'>
+                        <label>Duchas</label>
+                        <input name='duchas' ng-model='ficha.model.duchas' type="tel">
+                    </md-input-container>
+                </div>
+                <div layout='row'>
+                    <md-input-container flex='50'>
+                        <label>Chorros</label>
+                        <input name='chorros' ng-model='ficha.model.chorros' type="tel">
+                    </md-input-container>
+                    <md-input-container flex='50'>
+                        <label>Lavadora</label>
+                        <input name='lavadora' ng-model='ficha.model.lavadora' type="tel">
+                    </md-input-container>
+                </div>
+                <div layout='row'>
+                    <md-input-container flex='50'>
+                        <label>Pila</label>
+                        <input name='pila' ng-model='ficha.model.pila'>
+                    </md-input-container>
+                    <md-input-container flex='50'>
+                        <label>Piscina</label>
+                        <input name='piscina' ng-model='ficha.model.piscina' type="tel">
+                    </md-input-container>
+                </div>
+                <md-input-container class='md-block'>
+                    <md-checkbox name='jardin' aria-label='Cuenta con jardin' ng-model='ficha.model.jardin'>Cuenta con jardin</md-checkbox>
+                </md-input-container>
+
+                <div ng-if="ficha.model.jardin" flex-offset="15">
+                    <md-input-container class='md-block'>
+                        <label>Aprox.M2</label>
+                        <input name='mts2Jardin' ng-model='ficha.model.mts2Jardin' type="number" required>
+                        <div ng-messages="step9.formFicha.mts2Jardin.$error" role="alert">
+                            <div ng-message="required">Debe de ingresar M2.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <md-input-container class='md-block' ng-hide="ficha.toUpdate && ficha.alcantarilladoAnterior">
+                    <md-checkbox name='alcantarillado' aria-label='Alcantarillado' ng-model='ficha.model.alcantarillado'>Alcantarillado</md-checkbox>
+                </md-input-container>
             </form>
         </md-content>
     </div>
-</div>
-<md-select ng-model='ficha.motivoAsignacion'>
-    <md-option ng-value='option' ng-repeat='option in motivos'>
-        {{ option.description }}
-    </md-option>
-</md-select>
-</md-input-container>
-
-<md-input-container class='md-block'>
-    <label>Observaciones</label>
-    <input name='observacionesAsignacion' ng-model='ficha.observacionesAsignacion'>
-</md-input-container>
-</div>
-<!-- End Asignar Trabajo -->
-
-<div>
-    <md-button type="Buttton">Guardar</md-button>
-</div>
-</form>
-</md-content>
-</div>
 </div>

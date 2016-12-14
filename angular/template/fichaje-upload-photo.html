@@ -1,0 +1,62 @@
+<md-content layout="row" layout-fill>
+    <md-progress-linear ng-show='upload.loadingFotos' class='md-warn' md-mode='determinate' value='{{upload.progressFotos}}' style='z-index: 999999;'></md-progress-linear>
+    <section>
+        <div class="scrollable-nav-content top-clear">
+            <div layout-padding>
+                <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
+                    <span class="md-subhead">Carga de Fotografias Fichaje</span>
+                </md-toolbar>
+                <md-content class="md-whiteframe-1dp">
+                    <form name="upload.formFicha">
+                        <md-content class="md-padding" ng-if="upload.dbFotosFicha.length > 0">
+                            <div layout="row" ng-repeat="item in upload.dbFotosFicha">
+                                <div flex="25" ng-repeat="subItem in item">
+                                    <md-card>
+                                        <img ng-src="Session?key=201&photoId={{subItem}}" class="md-card-image" alt="Fichaje">
+                                    </md-card>
+                                </div>
+                            </div>
+                        </md-content>
+                        <md-input-container class="md-block">
+                            <lf-ng-md-file-input ng-disabled="upload.loadingFotos" lf-api="upload.apiFile" name="fotos" lf-files="upload.fotos.ficha" lf-browse-label="Abrir" lf-remove-label="Remover" lf-filesize="10MB" lf-totalsize="100MB" lf-mimetype="image/*" preview multiple></lf-ng-md-file-input>
+                            <div ng-messages="upload.formFicha.fotos.$error" style="color:red;">
+                                <div ng-message="filesize">Archivo demasiado grande, debe de ser menor a 12MB.</div>
+                                <div ng-message="totalsize">El total de Imagenes sobrepasa el maximo de 100MB.</div>
+                                <div ng-message="mimetype">Tipo de archivo incorrecto, solo esta permitido imagenes.</div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                </md-content>
+                <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center" ng-if="upload.alcantarillado">
+                    <span class="md-subhead">Fotografias Alcantarillado</span>
+                </md-toolbar>
+                <md-content class="md-whiteframe-1dp" ng-if="upload.alcantarillado">
+                    <form name="upload.formFicha">
+                        <md-content class="md-padding" ng-if="upload.dbFotosAlcan.length > 0">
+                            <div layout="row" ng-repeat="item in upload.dbFotosAlcan">
+                                <div flex="25" ng-repeat="subItem in item">
+                                    <md-card>
+                                        <img ng-src="Session?key=201&photoId={{subItem}}" class="md-card-image" alt="Fichaje">
+                                    </md-card>
+                                </div>
+                            </div>
+                        </md-content>
+                        <md-input-container class="md-block">
+                            <lf-ng-md-file-input ng-disabled="upload.loadingFotos" lf-api="upload.apiFileAlca" name="fotosAlcan" lf-files="upload.fotos.alcan" lf-browse-label="Abrir" lf-remove-label="Remover" lf-filesize="10MB" lf-totalsize="100MB" lf-mimetype="image/*" preview
+                                multiple></lf-ng-md-file-input>
+                            <div ng-messages="upload.formFicha.fotosAlcan.$error" style="color:red;">
+                                <div ng-message="filesize">Archivo demasiado grande, debe de ser menor a 12MB.</div>
+                                <div ng-message="totalsize">El total de Imagenes sobrepasa el maximo de 100MB.</div>
+                                <div ng-message="mimetype">Tipo de archivo incorrecto, solo esta permitido imagenes.</div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                </md-content>
+                <md-content class="md-whiteframe-1dp">
+                    <md-button ng-disabled="upload.loadingFotos" class="md-raised md-warn" ng-click="upload.cargarImagen($event, 'A')">Confirmar</md-button>
+                </md-content>
+            </div>
+        </div>
+        </div>
+    </section>
+</md-content>

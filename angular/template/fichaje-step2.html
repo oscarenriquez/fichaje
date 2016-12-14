@@ -3,23 +3,23 @@
         <md-toolbar class="md-hue-2 toolbar-densed" layout="row" layout-align="center center">
             <span class="md-subhead">Datos del Medidor</span>
         </md-toolbar>
-        <md-content class="md-whiteframe-1dp">
+        <md-content class="md-whiteframe-1dp" md-theme="readonly-theme">
             <form name="step2.formFicha">
                 <md-input-container class="md-block">
-                    <label>Nombre</label>
-                    <input name="nombre" ng-model="ficha.nombre">
+                    <label class="md-no-float">Nombre</label>
+                    <input name="nombre" ng-model="ficha.model.nombre" readonly>
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <label>Direcci&oacute;n</label>
-                    <input name="direccion" ng-model="ficha.direccion">
+                    <label class="md-no-float">Direcci&oacute;n</label>
+                    <input name="direccion" ng-model="ficha.model.direccion" readonly>
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <label>Medidor</label>
-                    <input name="medidor" ng-model="ficha.medidor">
+                    <label class="md-no-float">Medidor</label>
+                    <input name="medidor" ng-model="ficha.model.medidor" readonly>
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <label>Cuentas Alcantarillado</label>
-                    <input name="ctasAlcantarillado" ng-model="ficha.ctasAlcantarillado">
+                    <label class="md-no-float">Cuentas Alcantarillado</label>
+                    <input name="ctasAlcantarillado" ng-model="ficha.model.ctasAlcantarillado" readonly>
                 </md-input-container>
             </form>
         </md-content>

@@ -4,25 +4,29 @@
             <span class="md-subhead">Almacenamiento</span>
         </md-toolbar>
         <md-content class="md-whiteframe-1dp">
-            <form>
+            <form name="step8.formFicha">
                 <div layout='row'>
                     <md-input-container flex='50'>
                         <label>Cisterna Elevada</label>
-                        <input name="cisternaElevada" ng-model="ficha.cisternaElevada">
+                        <input name="cistElevada" ng-model="ficha.model.cistElevada">
                     </md-input-container>
                     <md-input-container flex='50'>
                         <label>Cisterna Subt.</label>
-                        <input name="cisternaSubt" ng-model="ficha.cisternaSubt">
+                        <input name="cistSubterranea" ng-model="ficha.model.cistSubterranea">
                     </md-input-container>
                 </div>
                 <md-input-container class="md-block">
-                    <md-checkbox name="toneles" aria-label="Toneles" ng-model="ficha.toneles">Toneles</md-checkbox>
+                    <md-checkbox name="toneles" aria-label="Toneles" ng-model="ficha.model.toneles">Toneles</md-checkbox>
                 </md-input-container>
-                <div>
+                <div ng-if="ficha.model.toneles" flex-offset="10">
                     <!-- Toneles -->
+                    <md-divider></md-divider>
                     <md-input-container class='md-block'>
                         <label>Cantidad</label>
-                        <input name='cantAlmacen' ng-model='ficha.cantAlmacen'>
+                        <input name='cantToneles' ng-model='ficha.model.cantToneles' required>
+                        <div ng-messages="step6.formFicha.cantToneles.$error" role="alert">
+                            <div ng-message="required">Debe de ingresar la cantidad de toneles.</div>
+                        </div>
                     </md-input-container>
                 </div>
                 <!-- End Toneles -->
